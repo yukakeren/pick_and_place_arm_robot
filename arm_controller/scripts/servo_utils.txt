@@ -1,0 +1,15 @@
+# servo_utils.py
+
+import serial
+import numpy as np
+
+def interpolate_np(angles, angle_range=(-60.0, 60.0), digital_range=(1000, 50000)):
+    digital_units = np.interp(angles, angle_range, digital_range)
+    return digital_units.astype(float)
+
+def open_serial(port='/dev/ttyACM0', baudrate=9600):
+    return serial.Serial(port, baudrate)
+
+def send_serial(ser, data_str):
+    if ser.is_open:
+        ser.write(data_str.encode())

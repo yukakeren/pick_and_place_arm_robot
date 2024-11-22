@@ -1,0 +1,50 @@
+dev_global t0 untuk base
+
+main.cpp 
+    count = 0;
+    function basic_position
+    while(!count == 3)
+        function basic_position
+        service call read_sensor.py as 
+            return distance in cm
+        count++;
+        send_topic distance to inverse kinematics
+            send_topic teta1,2,3 to send_degree
+
+        function up_position
+        function put_position(count)
+        function stack_position
+        function down_position(count)
+        function open
+    
+
+void basic_position()
+    define t1,2,3;
+    forward_kinematic.h
+    print "position basic di: "
+
+void up_position()
+    define t1,2,3; //here you close clamps
+    send_topic to send degree
+
+void put_position(count)
+    define t0 - count*()
+    send_topic to send degree
+
+void stack_position()
+    define t1,t2,t3;
+    send_topic to send degree
+
+function down_position()
+    how to go down while keeping link 4 (0 kpd x0)
+
+function open
+    define t4
+    send_topic to send degree
+
+
+
+
+
+
+

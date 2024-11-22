@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Function to convert degrees to radians
+double deg2rad(double degrees) {
+    return degrees * M_PI / 180.0;
+}
+
+int main() {
+    // Length of links in cm
+    double a1 = 11.4;
+    double a2 = 16.4;
+    double a3 = 16.7;
+
+    // Desired Position of End effector
+    double px = 30;
+    double py = 5;
+
+    // Desired orientation angle (in degrees)
+    double phi = 90;
+    phi = deg2rad(phi);  // Convert phi from degrees to radians
+
+    // Equations for Inverse kinematics
+    double wx = px - a3 * cos(phi);
+    double wy = py - a3 * sin(phi);
+
+    double delta = wx * wx + wy * wy;
+    double c2 = (delta - a1 * a1 - a2 * a2) / (2 * a1 * a2);
+    double s2 = sqrt(1 - c2 * c2);  
+    double theta_2 = atan2(s2, c2);
+
+    double s1 = ((a1 + a2 * c2) * wy - a2 * s2 * wx) / delta;
+    double c1 = ((a1 + a2 * c2) * wx + a2 * s2 * wy) / delta;
+    double theta_1 = atan2(s1, c1);
+    double theta_3 = phi - theta_1 - theta_2;
+    
+    cout << "theta_1: " << theta_1 * 180.0 / M_PI << " degrees" << endl;
+    cout << "theta_2: " << theta_2 * 180.0 / M_PI << " degrees" << endl;
+    cout << "theta_3: " << theta_3 * 180.0 / M_PI << " degrees" << endl;
+
+    return 0;
+}
